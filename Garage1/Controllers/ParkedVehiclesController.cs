@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Garage1.DataAccessLayer;
 using Garage1.Models;
+using Garage1.ViewModel;
 
 namespace Garage1.Controllers
 {
@@ -16,7 +17,7 @@ namespace Garage1.Controllers
         private GarageContext db = new GarageContext();
 
         // GET: ParkedVehicles
-        public ActionResult Index()
+        public ActionResult Index(indexViewModel model)
         {
             return View(db.Vehicles.ToList());
         }
@@ -51,9 +52,17 @@ namespace Garage1.Controllers
         {
             if (ModelState.IsValid)
             {
+                parkedVehicle.CheckInTime = DateTime.Now;
                 db.Vehicles.Add(parkedVehicle);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                var success = db.SaveChanges();
+                if (success > 0)
+                {
+                    var message = new indexViewModel();
+                    message.Success = true;
+                    message.Message = "Your vehicle is now parked";
+                    return RedirectToAction("Index", message);
+                }
+                    
             }
 
             return View(parkedVehicle);
