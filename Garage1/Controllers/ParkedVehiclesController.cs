@@ -37,6 +37,18 @@ namespace Garage1.Controllers
             return View(parkedVehicle);
         }
 
+        public ActionResult Search(string searchTerm = null)
+        {
+            var model = db.Vehicles
+                .OrderBy(i => i.RegNummer)
+                .Where(r => searchTerm == null || r.RegNummer==searchTerm)
+                .ToList();
+
+            return View(model);
+        }
+
+
+
         // GET: ParkedVehicles/Create
         public ActionResult Create()
         {
