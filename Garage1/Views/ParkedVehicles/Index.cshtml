@@ -4,13 +4,26 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
+<header>
+    <h2>Parked Vehicles</h2>
+    <div class="btn btn-primary">@Html.ActionLink("Check In", "Create")</div>
+</header>
+    
+<div class="parked-vehicles-options">
+    <div class="btn-group">
+        <input type="text" />
+        <div class="btn btn-danger"><a href="#">Check Out</a></div>
+    </div>
+    
+</div>
+
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RegNummer)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.VehicleType)
         </th>
@@ -26,14 +39,14 @@
         <th>
             @Html.DisplayNameFor(model => model.CheckInTime)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NumberOfWheels)
-        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegNummer)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.VehicleType)
         </td>
@@ -50,12 +63,9 @@
             @Html.DisplayFor(modelItem => item.CheckInTime)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.NumberOfWheels)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.RegNummer }) |
-            @Html.ActionLink("Details", "Details", new { id=item.RegNummer }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.RegNummer })
+            <div class="btn btn-success">@Html.ActionLink("Edit", "Edit", new { id=item.RegNummer })</div>
+            <div class="btn btn-primary">@Html.ActionLink("Details", "Details", new { id = item.RegNummer })</div>
+            <div class="btn btn-danger">@Html.ActionLink("Check Out", "Delete", new { id = item.RegNummer })</div>
         </td>
     </tr>
 }

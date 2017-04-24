@@ -22,3 +22,42 @@ select,
 textarea {
     max-width: 280px;
 }
+
+header{
+    padding-top: 20px;
+}
+
+.parked-vehicles-options {
+    padding: 20px 0px;
+}
+
+    .parked-vehicles-options input {
+        padding: 4px;
+        float: left;
+        margin-right: 5px;
+    }
+
+    .parked-vehicles-options .btn-group input{
+        float: left;
+    }
+
+.btn {
+    padding: 0;
+    border-radius: 0;
+}
+
+input.btn{
+    padding: 5px 15px;
+}
+
+.btn a{
+    display:block;
+    padding: 5px 15px;
+    width: auto;
+    color: white;
+}
+
+.btn a:hover {
+    color: #ddd;
+    text-decoration: none;
+}
