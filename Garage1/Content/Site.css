@@ -27,8 +27,12 @@ header{
     padding-top: 20px;
 }
 
+    header .btn {
+        padding: 5px 15px;
+    }
+
 .parked-vehicles-options {
-    padding: 20px 0px;
+    padding: 20px 0;
 }
 
     .parked-vehicles-options input {
@@ -41,23 +45,22 @@ header{
         float: left;
     }
 
+
 .btn {
-    padding: 0;
     border-radius: 0;
 }
 
-input.btn{
-    padding: 5px 15px;
-}
+    .btn a{
+        display:block;
+        width: auto;
+        color: white;
+    }
 
-.btn a{
-    display:block;
-    padding: 5px 15px;
-    width: auto;
-    color: white;
-}
+    .btn a:hover {
+        color: #ddd;
+        text-decoration: none;
+    }
 
-.btn a:hover {
-    color: #ddd;
-    text-decoration: none;
+.alert{
+    border: 1px solid;
 }
