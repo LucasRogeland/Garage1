@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Garage1.Models;
 
 namespace Garage1.ViewModel
 {
-    public class indexViewModel
+    public class IndexViewModel
     {  
-        public indexViewModel()
+        public IndexViewModel()
         {
-            Success = false;
+            Feedback = false;
         }
 
+        public List<ParkedVehicle> Vehicles { get; set; }
+        public bool Feedback { get; set; }
         public bool Success { get; set; }
         public string Message { get; set; }
     }
