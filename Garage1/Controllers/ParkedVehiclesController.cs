@@ -41,7 +41,7 @@ namespace Garage1.Controllers
         {
             var model = db.Vehicles
                 .OrderBy(i => i.RegNummer)
-                .Where(r => searchTerm == null || r.RegNummer==searchTerm)
+                .Where(r => string.IsNullOrEmpty(searchTerm) || r.RegNummer==searchTerm)
                 .ToList();
 
             return View(model);
