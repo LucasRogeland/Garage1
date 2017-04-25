@@ -17,13 +17,16 @@ namespace Garage1.Controllers
         private GarageContext db = new GarageContext();
 
         // GET: ParkedVehicles
-        public ActionResult Index(indexViewModel model)
+        public ActionResult Index(IndexViewModel model)
         {
-            return View(db.Vehicles.ToList());
+
+            model.Vehicles = db.Vehicles.ToList();
+
+            return View(model);
         }
 
-        // GET: ParkedVehicles/Details/5
-        public ActionResult Details(string id)
+            // GET: ParkedVehicles/Details/5
+            public ActionResult Details(string id)
         {
             if (id == null)
             {
@@ -69,15 +72,26 @@ namespace Garage1.Controllers
                 var success = db.SaveChanges();
                 if (success > 0)
                 {
-                    var message = new indexViewModel();
-                    message.Success = true;
-                    message.Message = "Your vehicle is now parked";
-                    return RedirectToAction("Index", message);
+                    var model = new IndexViewModel();
+                    model.Feedback = true;
+                    model.Success = true;
+                    model.Message = "Your " + parkedVehicle.VehicleType.ToString().ToLower() + " (" +parkedVehicle.RegNummer +") is now parked";
+                    return RedirectToAction("Index", model);
+                }
+                else
+                {
+
+                    var model = new IndexViewModel();
+                    model.Feedback = true;
+                    model.Success = false;
+                    model.Message = "We werent able to park your vehicle!";
+                    return RedirectToAction("Index", model);
+
                 }
                     
             }
 
-            return View(parkedVehicle);
+            return View("index", parkedVehicle);
         }
 
         // GET: ParkedVehicles/Edit/5
@@ -133,8 +147,22 @@ namespace Garage1.Controllers
         {
             ParkedVehicle parkedVehicle = db.Vehicles.Find(id);
             db.Vehicles.Remove(parkedVehicle);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (db.SaveChanges() > 0)
+            {
+                IndexViewModel model = new IndexViewModel();
+                model.Feedback = true;
+                model.Success = true;
+                model.Message = "Your " + parkedVehicle.VehicleType.ToString().ToLower() + " (" + parkedVehicle.RegNummer + ") has been checked out.";
+                return RedirectToAction("index", model);
+            }
+            else
+            {
+                IndexViewModel model = new IndexViewModel();
+                model.Feedback = true;
+                model.Success = true;
+                model.Message = "We werent able to check out your " + parkedVehicle.VehicleType.ToString().ToLower() + ", " + parkedVehicle.RegNummer + ".";
+                return RedirectToAction("index", model);
+            }
         }
 
         protected override void Dispose(bool disposing)

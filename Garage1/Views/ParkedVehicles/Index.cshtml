@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Garage1.Models.ParkedVehicle>
+﻿@model Garage1.ViewModel.IndexViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -8,41 +8,57 @@
 
 <header>
     <h2>Parked Vehicles</h2>
-    <div class="btn btn-primary">@Html.ActionLink("Check In", "Create")</div>
+    @Html.ActionLink("Check In", "Create", null, new { @class= "btn btn-primary"})
+    <div class="parked-vehicles-options">
+        <div class="btn-group">
+
+            <input type="text" />
+            <a class="btn btn-danger" href="#">Check Out</a>
+        </div>
+
+    </div>
 </header>
     
-<div class="parked-vehicles-options">
-    <div class="btn-group">
-        <input type="text" />
-        <div class="btn btn-danger"><a href="#">Check Out</a></div>
+
+
+@if (Model.Feedback)
+{
+    string divClass;
+    if (Model.Success) {
+        divClass = "success";
+    } else{
+        divClass = "danger";
+    }
+    <div class="alert alert-@divClass alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <p>@Model.Message</p>
     </div>
-    
-</div>
+}
 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.RegNummer)
+            @Html.DisplayNameFor(model => model.Vehicles[0].RegNummer)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.VehicleType)
+            @Html.DisplayNameFor(model => model.Vehicles[0].VehicleType)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Manufacturer)
+            @Html.DisplayNameFor(model => model.Vehicles[0].Manufacturer)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Model)
+            @Html.DisplayNameFor(model => model.Vehicles[0].Model)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Color)
+            @Html.DisplayNameFor(model => model.Vehicles[0].Color)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CheckInTime)
+            @Html.DisplayNameFor(model => model.Vehicles[0].CheckInTime)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model.Vehicles) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.RegNummer)
@@ -63,9 +79,9 @@
             @Html.DisplayFor(modelItem => item.CheckInTime)
         </td>
         <td>
-            <div class="btn btn-success">@Html.ActionLink("Edit", "Edit", new { id=item.RegNummer })</div>
-            <div class="btn btn-primary">@Html.ActionLink("Details", "Details", new { id = item.RegNummer })</div>
-            <div class="btn btn-danger">@Html.ActionLink("Check Out", "Delete", new { id = item.RegNummer })</div>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RegNummer }, new { @class="btn btn-success"})
+            @Html.ActionLink("Details", "Details", new { id = item.RegNummer }, new { @class = "btn btn-primary"})
+            @Html.ActionLink("Check Out", "Delete", new { id = item.RegNummer }, new { @class = "btn btn-danger"})
         </td>
     </tr>
 }
