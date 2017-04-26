@@ -229,27 +229,27 @@ namespace Garage1.Controllers
         {
             ParkedVehicle parkedVehicle = db.Vehicles.Find(id);
             db.Vehicles.Remove(parkedVehicle);
-            if (db.SaveChanges() > 0)
+            var success = db.SaveChanges() > 0;
+            if (success)
             {
-                IndexViewModel model = new IndexViewModel();
-                model.Feedback = true;
-                model.Success = true;
-                model.Message = "Your " + parkedVehicle.VehicleType.ToString().ToLower() + " (" + parkedVehicle.Licens + ") has been checked out.";
-                return RedirectToAction("index", model);
+                ReceiptViewModel model = new ReceiptViewModel();
+                model.Vehicle = parkedVehicle;
+                return View("receipt", model);
             }
             else
             {
                 IndexViewModel model = new IndexViewModel();
                 model.Feedback = true;
-                model.Success = true;
+                model.Success = false;
                 model.Message = "We werent able to check out your " + parkedVehicle.VehicleType.ToString().ToLower() + ", " + parkedVehicle.Licens + ".";
                 return RedirectToAction("index", model);
             }
         }
 
-        public ActionResult Receipts(ReceiptsViewModel model) {
-
-            return View();
+        public ActionResult Receipt(ReceiptViewModel model) {
+            if (model.Vehicle == null)
+                model = new ReceiptViewModel() { Vehicle = new ParkedVehicle() { Licens = "Null" } };
+            return View(model);
         }
 
         protected override void Dispose(bool disposing)

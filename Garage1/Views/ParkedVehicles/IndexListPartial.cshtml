@@ -23,24 +23,10 @@
 </tr>
 
 
-@{
-    int i = 1;
-}
-
 @foreach (var item in Model.Vehicles)
 {
 
-    string cssClass;
-    if ((i % 2) == 0)
-    {
-        cssClass = "even";
-    }
-    else
-    {
-        cssClass = "";
-    }
-
-    <tr class="@cssClass">
+    <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Licens)
         </td>
@@ -65,5 +51,4 @@
             @Html.ActionLink("Check Out", "Delete", new { id = item.Licens }, new { @class = "btn btn-danger" })
         </td>
     </tr>
-    i++;
 }
