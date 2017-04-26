@@ -7,6 +7,6 @@ namespace Garage1.Enums
 {
     public enum Vehicles
     {
-        Car, Motorcycle, Buss
+        Undefined, Car, Motorcycle, Buss
     }
 }

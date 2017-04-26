@@ -11,7 +11,7 @@ namespace Garage1.Models
     public class ParkedVehicle
     {
         [Key]
-        public string RegNummer { get; set; }
+        public string Licens { get; set; }
         public Vehicles VehicleType { get; set; }
         public string Manufacturer { get; set; }
         public string Model { get; set; }
