@@ -20,7 +20,9 @@ namespace Garage1.Controllers
         public ActionResult Index(IndexViewModel model)
         {
 
-            model.Vehicles = db.Vehicles.ToList();
+            if (model.Vehicles == null) {
+                model.Vehicles = db.Vehicles.ToList();
+            }
 
             return View(model);
         }
@@ -43,14 +45,90 @@ namespace Garage1.Controllers
         public ActionResult Search(string searchTerm = null)
         {
             var model = db.Vehicles
-                .OrderBy(i => i.RegNummer)
-                .Where(r => string.IsNullOrEmpty(searchTerm) || r.RegNummer==searchTerm)
+                .OrderBy(i => i.Licens)
+                .Where(r => string.IsNullOrEmpty(searchTerm) || r.Licens==searchTerm)
                 .ToList();
 
             return View(model);
         }
 
+        public ActionResult SearchAj(SearchViewModel model ) {
 
+            List<ParkedVehicle> Vehicles = new List<ParkedVehicle>();
+
+            Vehicles = (from vehicle in db.Vehicles
+                        where (model.License == null ||  vehicle.Licens.StartsWith(model.License)) &&
+                              (model.Manufacturer == null || vehicle.Manufacturer.StartsWith(model.Manufacturer)) && 
+                              (model.VModel == null || vehicle.Model.StartsWith(model.VModel)) &&
+                              (model.Color == null || vehicle.Color.StartsWith(model.Color)) &&
+                              (model.VehicleType == Enums.Vehicles.Undefined || model.VehicleType == vehicle.VehicleType)
+                        select vehicle).ToList();
+            return PartialView("IndexListPartial", Vehicles);
+        }
+
+        public ActionResult SearchAjAll() {
+            return PartialView("IndexListPartial", db.Vehicles);
+        }
+
+        public ActionResult SortAj(SortViewModel model)
+        {
+            IEnumerable<ParkedVehicle> list;
+
+            if (model.SortBy == "Licens")
+            {
+                if(!model.desc)
+                    list = db.Vehicles.OrderBy(x => x.Licens);
+                else
+                    list = db.Vehicles.OrderByDescending(x => x.Licens);
+            }
+            else if (model.SortBy == "VehicleType")
+            {
+                if (!model.desc)
+                    list = db.Vehicles.OrderBy(x => x.VehicleType.ToString());
+                else
+                    list = db.Vehicles.OrderByDescending(x => x.VehicleType.ToString());
+                
+            }
+            else if (model.SortBy == "Manufacturer")
+            {
+                if (!model.desc)
+                    list = db.Vehicles.OrderBy(x => x.Manufacturer);
+                else
+                    list = db.Vehicles.OrderByDescending(x => x.Manufacturer);
+            }
+            else if (model.SortBy == "Model")
+            {
+                if (!model.desc)
+                    list = db.Vehicles.OrderBy(x => x.Model);
+                else
+                    list = db.Vehicles.OrderByDescending(x => x.Model);
+            }
+            else if (model.SortBy == "Color")
+            {
+                if (!model.desc)
+                    list = db.Vehicles.OrderBy(x => x.Color);
+                else
+                    list = db.Vehicles.OrderByDescending(x => x.Color);
+            }
+            else if (model.SortBy == "CheckInTime")
+            {
+                if (!model.desc)
+                    list = db.Vehicles.OrderBy(x => x.CheckInTime);
+                else
+                    list = db.Vehicles.OrderByDescending(x => x.CheckInTime);
+            }
+            else
+            {
+                list = db.Vehicles;
+            }
+
+            var cssClass = "";
+
+            if (!model.desc)
+                cssClass = "desc";
+
+            return PartialView("IndexListPartial", new IndexListPartialViewModel() { Vehicles = list, CssClassDesc = cssClass, Target = model.SortBy });
+        }
 
         // GET: ParkedVehicles/Create
         public ActionResult Create()
@@ -63,7 +141,7 @@ namespace Garage1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RegNummer,VehicleType,Manufacturer,Model,Color,CheckInTime,NumberOfWheels")] ParkedVehicle parkedVehicle)
+        public ActionResult Create([Bind(Include = "Licens,VehicleType,Manufacturer,Model,Color,CheckInTime,NumberOfWheels")] ParkedVehicle parkedVehicle)
         {
             if (ModelState.IsValid)
             {
@@ -75,7 +153,7 @@ namespace Garage1.Controllers
                     var model = new IndexViewModel();
                     model.Feedback = true;
                     model.Success = true;
-                    model.Message = "Your " + parkedVehicle.VehicleType.ToString().ToLower() + " (" +parkedVehicle.RegNummer +") is now parked";
+                    model.Message = "Your " + parkedVehicle.VehicleType.ToString().ToLower() + " (" +parkedVehicle.Licens +") is now parked";
                     return RedirectToAction("Index", model);
                 }
                 else
@@ -114,10 +192,14 @@ namespace Garage1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RegNummer,VehicleType,Manufacturer,Model,Color,CheckInTime,NumberOfWheels")] ParkedVehicle parkedVehicle)
+        public ActionResult Edit([Bind(Include = "Licens,VehicleType,Manufacturer,Model,Color,CheckInTime,NumberOfWheels")] ParkedVehicle parkedVehicle)
         {
             if (ModelState.IsValid)
             {
+                DateTime vec = (from v in db.Vehicles
+                                    where v.Licens == parkedVehicle.Licens
+                                    select v.CheckInTime).First();
+                parkedVehicle.CheckInTime = vec;
                 db.Entry(parkedVehicle).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -152,7 +234,7 @@ namespace Garage1.Controllers
                 IndexViewModel model = new IndexViewModel();
                 model.Feedback = true;
                 model.Success = true;
-                model.Message = "Your " + parkedVehicle.VehicleType.ToString().ToLower() + " (" + parkedVehicle.RegNummer + ") has been checked out.";
+                model.Message = "Your " + parkedVehicle.VehicleType.ToString().ToLower() + " (" + parkedVehicle.Licens + ") has been checked out.";
                 return RedirectToAction("index", model);
             }
             else
@@ -160,7 +242,7 @@ namespace Garage1.Controllers
                 IndexViewModel model = new IndexViewModel();
                 model.Feedback = true;
                 model.Success = true;
-                model.Message = "We werent able to check out your " + parkedVehicle.VehicleType.ToString().ToLower() + ", " + parkedVehicle.RegNummer + ".";
+                model.Message = "We werent able to check out your " + parkedVehicle.VehicleType.ToString().ToLower() + ", " + parkedVehicle.Licens + ".";
                 return RedirectToAction("index", model);
             }
         }
