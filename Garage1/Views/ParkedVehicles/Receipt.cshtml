@@ -1,0 +1,46 @@
+﻿@model Garage1.ViewModel.ReceiptViewModel
+
+@{
+    ViewBag.Title = "Receipts";
+}
+
+<h2>Receipt</h2>
+
+<div class="data">
+
+    <div class="data-row">
+        <div class="data-heading">@Model.Vehicle.Manufacturer</div>
+    </div>
+
+    <div class="data-row">
+        <div class="data-title">@Html.DisplayNameFor(m => m.Vehicle.Licens): </div>
+        <div class="data-body">@Model.Vehicle.Licens</div>
+    </div>
+
+    <div class="data-row">
+        <div class="data-title">@Html.DisplayNameFor(m => m.Vehicle.Model): </div>
+        <div class="data-body">@Model.Vehicle.Model</div>
+    </div>
+
+    <div class="data-row">
+        <div class="data-title">@Html.DisplayNameFor(m => m.Vehicle.Color): </div>
+        <div class="data-body">@Model.Vehicle.Model</div>
+    </div>
+
+    @{ 
+        TimeSpan timeParked = DateTime.Now - Model.Vehicle.CheckInTime;
+    }
+
+    <div class="data-row">
+        <div class="data-title">Time Parked: </div>
+        <div class="data-body">@if (timeParked.Days > 0) { @timeParked.Days @Html.Raw("Days");} @if (timeParked.Hours > 0) { @timeParked.Hours @Html.Raw(" Hours");} @if (timeParked.Minutes > 0) { @timeParked.Minutes @Html.Raw(" Minutes");}@if (timeParked.Seconds > 0) { @timeParked.Seconds @Html.Raw(" Seconds") }</div>
+    </div>
+
+    <div class="data-row">
+        <div class="data-title">Cost: </div>
+        <div class="data-body"> @(timeParked.Seconds * 60) </div>
+    </div>
+
+</div>
+
+@Html.ActionLink("Back", "index", null, new { @class = "btn btn-primary"})

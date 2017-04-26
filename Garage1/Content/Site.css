@@ -97,3 +97,25 @@ header{
 .clickable{
     cursor: pointer;
 }
+
+.data {
+    font-size: 18px;
+}
+
+.data-row {
+    
+}
+
+.data-heading{
+    font-size: 23px;
+    font-weight:bold;
+}
+
+.data-title{
+    font-weight:bold;
+    display:inline-block;
+}
+
+.data-body {
+    display: inline-block;
+}
