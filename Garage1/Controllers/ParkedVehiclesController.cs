@@ -54,20 +54,20 @@ namespace Garage1.Controllers
 
         public ActionResult SearchAj(SearchViewModel model ) {
 
-            List<ParkedVehicle> Vehicles = new List<ParkedVehicle>();
+            List<ParkedVehicle> vehicles = new List<ParkedVehicle>();
 
-            Vehicles = (from vehicle in db.Vehicles
+            vehicles = (from vehicle in db.Vehicles
                         where (model.License == null ||  vehicle.Licens.StartsWith(model.License)) &&
                               (model.Manufacturer == null || vehicle.Manufacturer.StartsWith(model.Manufacturer)) && 
                               (model.VModel == null || vehicle.Model.StartsWith(model.VModel)) &&
                               (model.Color == null || vehicle.Color.StartsWith(model.Color)) &&
                               (model.VehicleType == Enums.Vehicles.Undefined || model.VehicleType == vehicle.VehicleType)
                         select vehicle).ToList();
-            return PartialView("IndexListPartial", Vehicles);
+            return PartialView("IndexListPartial", new IndexListPartialViewModel() { Vehicles = vehicles, CssClassDesc = "", Target = "" });
         }
 
         public ActionResult SearchAjAll() {
-            return PartialView("IndexListPartial", db.Vehicles);
+            return PartialView("IndexListPartial", new IndexListPartialViewModel() { Vehicles = db.Vehicles, CssClassDesc = "", Target = "" });
         }
 
         public ActionResult SortAj(SortViewModel model)
@@ -245,6 +245,11 @@ namespace Garage1.Controllers
                 model.Message = "We werent able to check out your " + parkedVehicle.VehicleType.ToString().ToLower() + ", " + parkedVehicle.Licens + ".";
                 return RedirectToAction("index", model);
             }
+        }
+
+        public ActionResult Receipts(ReceiptsViewModel model) {
+
+            return View();
         }
 
         protected override void Dispose(bool disposing)

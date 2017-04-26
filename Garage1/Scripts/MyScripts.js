@@ -15,8 +15,6 @@
 
     if (str.length !== 0) {
         console.log("Get");
-        
-
         xhttp.open("GET", "/ParkedVehicles/SearchAj?License=" + str);
         xhttp.send();
     } else {
