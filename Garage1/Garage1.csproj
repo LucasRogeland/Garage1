@@ -168,8 +168,10 @@
     <Compile Include="ViewModel\SortViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\01_liverpool-one-car-park_int3.jpg" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\mercedes-benz-sls-amg-black-series-yellow-mercedes-benz-yellow-road-supercar.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
