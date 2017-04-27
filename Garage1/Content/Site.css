@@ -127,16 +127,33 @@ p{
 }
 
 .data {
+    margin-top:80px;
     font-size: 18px;
+    padding: 10px;
+    max-width: 400px;
+    min-width: 300px;
+    margin: 80px auto;
 }
 
-.data-row {
+.data-row div{
+    display:inline-block;
 }
 
-.data-heading {
+.data-row p{
+    margin: 0 0;
+    display:block;
+    
+}
+
+.data-date{
+    float:right;
+}
+
+.data-heading{
     font-size: 23px;
     font-weight: bold;
 }
+
 
 .data-title {
     font-weight: bold;
@@ -173,3 +190,4 @@ nav .navbar .navbar-brand{
 .jumbotron {
    margin-bottom:0;
 }
+
