@@ -24,7 +24,10 @@ namespace Garage1.Migrations
               p => p.Licens,
               new ParkedVehicle { Licens = "TEN-712", VehicleType = Enums.Vehicles.Car, Manufacturer = "Volvo", Model = "XC90", Color = "Black", NumberOfWheels = 4, CheckInTime = DateTime.Now },
               new ParkedVehicle { Licens = "HER-034", VehicleType = Enums.Vehicles.Car, Manufacturer = "BMW", Model = "M3", Color = "Red", NumberOfWheels = 4, CheckInTime = DateTime.Now },
-              new ParkedVehicle { Licens = "FND-258", VehicleType = Enums.Vehicles.Car, Manufacturer = "Saab", Model = "9-3", Color = "Blue", NumberOfWheels = 4, CheckInTime = DateTime.Now }
+              new ParkedVehicle { Licens = "FND-258", VehicleType = Enums.Vehicles.Car, Manufacturer = "Saab", Model = "9-3", Color = "Blue", NumberOfWheels = 4, CheckInTime = DateTime.Now },
+              new ParkedVehicle { Licens = "ASB-348", VehicleType = Enums.Vehicles.Car, Manufacturer = "Volvo", Model = "V60", Color = "Black", NumberOfWheels = 4, CheckInTime = DateTime.Now },
+              new ParkedVehicle { Licens = "HRE-634", VehicleType = Enums.Vehicles.Car, Manufacturer = "Saab", Model = "9-2", Color = "Black", NumberOfWheels = 4, CheckInTime = DateTime.Now },
+              new ParkedVehicle { Licens = "LER-691", VehicleType = Enums.Vehicles.Car, Manufacturer = "BMW", Model = "M4", Color = "Red", NumberOfWheels = 4, CheckInTime = DateTime.Now }
             );
             
         }
