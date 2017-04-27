@@ -1,0 +1,54 @@
+﻿@model Garage1.ViewModel.IndexListPartialViewModel
+
+<tr>
+    <th class="clickable @if (Model.Target == "Licens") { @Model.CssClassDesc } " onclick="sort(this)">
+        @Html.DisplayNameFor(model => model.Vehicles.LastOrDefault().Licens)
+    </th>
+    <th class="clickable @if (Model.Target == "VehicleType") { @Model.CssClassDesc }" onclick="sort(this)">
+        @Html.DisplayNameFor(model => model.Vehicles.LastOrDefault().VehicleType)
+    </th>
+    <th class="clickable @if (Model.Target == "Manufacturer") { @Model.CssClassDesc }" onclick="sort(this)">
+        @Html.DisplayNameFor(model => model.Vehicles.LastOrDefault().Manufacturer)
+    </th>
+    <th class="clickable @if (Model.Target == "Model") { @Model.CssClassDesc }" onclick="sort(this)">
+        @Html.DisplayNameFor(model => model.Vehicles.LastOrDefault().Model)
+    </th>
+    <th class="clickable @if (Model.Target == "Color") { @Model.CssClassDesc }" onclick="sort(this)">
+        @Html.DisplayNameFor(model => model.Vehicles.LastOrDefault().Color)
+    </th>
+    <th class="clickable @if (Model.Target == "CheckInTime") { @Model.CssClassDesc }" onclick="sort(this)">
+        @Html.DisplayNameFor(model => model.Vehicles.LastOrDefault().CheckInTime)
+    </th>
+    <th></th>
+</tr>
+
+
+@foreach (var item in Model.Vehicles)
+{
+
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Licens)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VehicleType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Manufacturer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckInTime)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Licens }, new { @class = "btn btn-success" })
+            @Html.ActionLink("Details", "Details", new { id = item.Licens }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Check Out", "Delete", new { id = item.Licens }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}

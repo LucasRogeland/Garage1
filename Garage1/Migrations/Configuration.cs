@@ -21,10 +21,10 @@ namespace Garage1.Migrations
             //  to avoid creating duplicate seed data. E.g.
             //
             context.Vehicles.AddOrUpdate(
-              p => p.RegNummer,
-              new ParkedVehicle { RegNummer = "TEN-712", VehicleType = Enums.Vehicles.Car, Manufacturer = "Volvo", Model = "XC90", Color = "Black", NumberOfWheels = 4, CheckInTime = DateTime.Now },
-              new ParkedVehicle { RegNummer = "HER-034", VehicleType = Enums.Vehicles.Car, Manufacturer = "BMW", Model = "M3", Color = "Red", NumberOfWheels = 4, CheckInTime = DateTime.Now },
-              new ParkedVehicle { RegNummer = "FND-258", VehicleType = Enums.Vehicles.Car, Manufacturer = "Saab", Model = "9-3", Color = "Blue", NumberOfWheels = 4, CheckInTime = DateTime.Now }
+              p => p.Licens,
+              new ParkedVehicle { Licens = "TEN-712", VehicleType = Enums.Vehicles.Car, Manufacturer = "Volvo", Model = "XC90", Color = "Black", NumberOfWheels = 4, CheckInTime = DateTime.Now },
+              new ParkedVehicle { Licens = "HER-034", VehicleType = Enums.Vehicles.Car, Manufacturer = "BMW", Model = "M3", Color = "Red", NumberOfWheels = 4, CheckInTime = DateTime.Now },
+              new ParkedVehicle { Licens = "FND-258", VehicleType = Enums.Vehicles.Car, Manufacturer = "Saab", Model = "9-3", Color = "Blue", NumberOfWheels = 4, CheckInTime = DateTime.Now }
             );
             
         }
