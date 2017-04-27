@@ -1,6 +1,13 @@
-﻿body {
+﻿html {
+    height: 100%;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    min-height: 100%;
     padding-top: 50px;
-    padding-bottom: 20px;
+    padding-bottom: 50px;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -23,7 +30,7 @@ textarea {
     max-width: 280px;
 }
 
-header{
+header {
     padding: 20px 0;
 }
 
@@ -31,55 +38,75 @@ header{
         padding: 5px 15px;
     }
 
+footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 70px;
+    background-color: #000000;
+    color: #ffd800;
+    margin-bottom: 0;
+    vertical-align: baseline;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 15px;
+}
+
+p{
+    font-size:12px;
+}
+
 .parked-vehicles-options {
     padding: 20px 0;
 }
 
     .parked-vehicles-options input {
         padding: 4px;
-        display:inline-block;
+        display: inline-block;
         margin-right: 5px;
     }
 
-    .parked-vehicles-options .btn-group input{
+    .parked-vehicles-options .btn-group input {
         float: left;
     }
 
-.advanced-search{
+.advanced-search {
     margin-top: 10px;
 }
 
-    .advanced-search div{
+    .advanced-search div {
         padding: 10px 0;
     }
 
-    .advanced-search div input {
-        margin-top: 5px;
-    }
+        .advanced-search div input {
+            margin-top: 5px;
+        }
 
 
 .btn {
     border-radius: 0;
 }
 
-    .btn a{
-        display:block;
+    .btn a {
+        display: block;
         width: auto;
         color: white;
     }
 
-    .btn a:hover {
-        color: #ddd;
-        text-decoration: none;
-    }
+        .btn a:hover {
+            color: #ddd;
+            text-decoration: none;
+        }
+
 .my-label {
     font-size: 20px;
     color: #333;
     display: block;
     margin: 0;
-
 }
-.alert{
+
+.alert {
     border: 1px solid;
 }
 
@@ -87,14 +114,15 @@ header{
     background-color: #ddd;
 }
 
-.left{
+.left {
     float: right;
 }
+
 .table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td {
     vertical-align: inherit;
 }
 
-.clickable{
+.clickable {
     cursor: pointer;
 }
 
@@ -103,19 +131,45 @@ header{
 }
 
 .data-row {
-    
 }
 
-.data-heading{
+.data-heading {
     font-size: 23px;
-    font-weight:bold;
+    font-weight: bold;
 }
 
-.data-title{
-    font-weight:bold;
-    display:inline-block;
+.data-title {
+    font-weight: bold;
+    display: inline-block;
 }
 
 .data-body {
     display: inline-block;
+}
+
+.navbar {
+    font-family: 'Londrina Solid', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.navbar ul{
+   margin-right:20px;
+}
+
+nav .navbar .navbar-brand{
+    margin-left:10px;
+}
+
+.navbar-brand span {
+    color: #ffd800;
+    font-size: 30px;
+}
+
+.image-startpage {
+   max-width: 400px;
+   height: auto;
+   margin-bottom:10px;
+}
+
+.jumbotron {
+   margin-bottom:0;
 }
