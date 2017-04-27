@@ -8,15 +8,27 @@
 
 <header>
     <h2>Parked Vehicles</h2>
-    @Html.ActionLink("Check In", "Create", null, new { @class= "btn btn-primary"})
+    
     <div class="parked-vehicles-options">
         <div class="btn-group">
-
-            <input type="text" />
-            <a class="btn btn-danger" href="#">Check Out</a>
+            <p class="my-label">Search</p>
+            <input type="text" onkeyup="search(this.value)"/>
+           
         </div>
+        <div class="advanced-search">
+            <a href="#" id="advanced-search-toggle" onclick="toggleAdvancedSearch()">Advanced Search</a>
+            <div class="hidden" id="advanced-search-cont">
+                <input onkeyup="AdvacedSearch()" class="advanced-search-input" type="text" name="vType" placeholder="Vehicle Type" />
+                <input onkeyup="AdvacedSearch()" class="advanced-search-input" type="text" name="manuf" placeholder="Manufacturer"/>
+                <input onkeyup="AdvacedSearch()" class="advanced-search-input" type="text" name="model" placeholder="Model" />
+                <input onkeyup="AdvacedSearch()" class="advanced-search-input"  type="text" name="color" placeholder="Color" />
+                @*<input onkeyup="AdvacedSearch()" class="advanced-search-input" type="text" name="time" placeholder="Check In Time" />*@
+            </div>
+        </div>
+        
 
     </div>
+    @Html.ActionLink("Check In", "Create", null, new { @class = "btn btn-primary" })
 </header>
     
 
@@ -26,7 +38,7 @@
     string divClass;
     if (Model.Success) {
         divClass = "success";
-    } else{
+    } else {
         divClass = "danger";
     }
     <div class="alert alert-@divClass alert-dismissable">
@@ -35,55 +47,9 @@
     </div>
 }
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Vehicles[0].RegNummer)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Vehicles[0].VehicleType)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Vehicles[0].Manufacturer)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Vehicles[0].Model)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Vehicles[0].Color)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Vehicles[0].CheckInTime)
-        </th>
-        <th></th>
-    </tr>
+<table id="autocomplete" class="table table-striped">
 
-@foreach (var item in Model.Vehicles) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.RegNummer)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VehicleType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Manufacturer)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Model)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Color)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CheckInTime)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.RegNummer }, new { @class="btn btn-success"})
-            @Html.ActionLink("Details", "Details", new { id = item.RegNummer }, new { @class = "btn btn-primary"})
-            @Html.ActionLink("Check Out", "Delete", new { id = item.RegNummer }, new { @class = "btn btn-danger"})
-        </td>
-    </tr>
+@{
+    Html.RenderPartial("IndexListPartial", new Garage1.ViewModel.IndexListPartialViewModel() { Vehicles = Model.Vehicles, CssClassDesc = ""});
 }
-
 </table>

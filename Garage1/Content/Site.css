@@ -24,7 +24,7 @@ textarea {
 }
 
 header{
-    padding-top: 20px;
+    padding: 20px 0;
 }
 
     header .btn {
@@ -37,12 +37,24 @@ header{
 
     .parked-vehicles-options input {
         padding: 4px;
-        float: left;
+        display:inline-block;
         margin-right: 5px;
     }
 
     .parked-vehicles-options .btn-group input{
         float: left;
+    }
+
+.advanced-search{
+    margin-top: 10px;
+}
+
+    .advanced-search div{
+        padding: 10px 0;
+    }
+
+    .advanced-search div input {
+        margin-top: 5px;
     }
 
 
@@ -60,7 +72,50 @@ header{
         color: #ddd;
         text-decoration: none;
     }
+.my-label {
+    font-size: 20px;
+    color: #333;
+    display: block;
+    margin: 0;
 
+}
 .alert{
     border: 1px solid;
+}
+
+.even {
+    background-color: #ddd;
+}
+
+.left{
+    float: right;
+}
+.table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td {
+    vertical-align: inherit;
+}
+
+.clickable{
+    cursor: pointer;
+}
+
+.data {
+    font-size: 18px;
+}
+
+.data-row {
+    
+}
+
+.data-heading{
+    font-size: 23px;
+    font-weight:bold;
+}
+
+.data-title{
+    font-weight:bold;
+    display:inline-block;
+}
+
+.data-body {
+    display: inline-block;
 }
