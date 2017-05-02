@@ -1,4 +1,4 @@
-﻿@model Garage1.Models.ParkedVehicle
+﻿@model Garage1.Models.ParkingDetails
 
 @{
     ViewBag.Title = "Delete";
@@ -12,43 +12,43 @@
     <dl class="dl-horizontal">
    
         <dt>
-            @Html.DisplayNameFor(model => model.VehicleType)
+            @Html.DisplayNameFor(model => model.Vehicle.VehicleType)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.VehicleType)
+            @Html.DisplayFor(model => model.Vehicle.VehicleType)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Licens)
+            @Html.DisplayNameFor(model => model.Vehicle.Licens)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Licens)
+            @Html.DisplayFor(model => model.Vehicle.Licens)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Manufacturer)
+            @Html.DisplayNameFor(model => model.Vehicle.Manufacturer)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Manufacturer)
+            @Html.DisplayFor(model => model.Vehicle.Manufacturer)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Model)
+            @Html.DisplayNameFor(model => model.Vehicle.Model)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Model)
+            @Html.DisplayFor(model => model.Vehicle.Model)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Color)
+            @Html.DisplayNameFor(model => model.Vehicle.Color)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Color)
+            @Html.DisplayFor(model => model.Vehicle.Color)
         </dd>
 
         <dt>
@@ -60,11 +60,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NumberOfWheels)
+            @Html.DisplayNameFor(model => model.Vehicle.NumberOfWheels)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NumberOfWheels)
+            @Html.DisplayFor(model => model.Vehicle.NumberOfWheels)
         </dd>
 
     </dl>

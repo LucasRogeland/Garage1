@@ -1,7 +1,7 @@
 ﻿@model Garage1.ViewModel.IndexViewModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Parked Vehicles";
 }
 
 
@@ -12,7 +12,7 @@
     <div class="parked-vehicles-options">
         <div class="btn-group">
             <p class="my-label">Search</p>
-            <input type="text" onkeyup="search(this.value)"/>
+            <input type="text" onkeyup="search(this.value)" placeholder="License"/>
            
         </div>
         <div class="advanced-search">
@@ -50,6 +50,6 @@
 <table id="autocomplete" class="table table-striped">
 
 @{
-    Html.RenderPartial("IndexListPartial", new Garage1.ViewModel.IndexListPartialViewModel() { Vehicles = Model.Vehicles, CssClassDesc = ""});
+    Html.RenderPartial("IndexListPartial", new Garage1.ViewModel.IndexListPartialViewModel() { Details = Model.ParkingDetails, CssClassDesc = ""});
 }
 </table>

@@ -13,7 +13,7 @@ namespace Garage1.ViewModel
             Feedback = false;
         }
 
-        public List<ParkedVehicle> Vehicles { get; set; }
+        public List<ParkingDetails> ParkingDetails { get; set; }
         public bool Feedback { get; set; }
         public bool Success { get; set; }
         public string Message { get; set; }

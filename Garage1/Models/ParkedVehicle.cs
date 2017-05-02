@@ -11,12 +11,21 @@ namespace Garage1.Models
     public class ParkedVehicle
     {
         [Key]
+        [Display(Name = "License")]
         public string Licens { get; set; }
+
+        [Display(Name = "Vehicle Type")]
+        [Required]
         public Vehicles VehicleType { get; set; }
+
+        [Required]
         public string Manufacturer { get; set; }
+
+        [Required]
         public string Model { get; set; }
         public string Color { get; set; }
-        public DateTime CheckInTime { get; set; }
+
+        [Range(0, 8)]
         public int NumberOfWheels { get; set; }
     }
 }

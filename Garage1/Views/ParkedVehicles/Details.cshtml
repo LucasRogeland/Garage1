@@ -1,4 +1,4 @@
-﻿@model Garage1.Models.ParkedVehicle
+﻿@model Garage1.Models.ParkingDetails
 
 @{
     ViewBag.Title = "Details";
@@ -11,35 +11,35 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.VehicleType)
+            @Html.DisplayNameFor(model => model.Vehicle.VehicleType)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.VehicleType)
+            @Html.DisplayFor(model => model.Vehicle.VehicleType)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Manufacturer)
+            @Html.DisplayNameFor(model => model.Vehicle.Manufacturer)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Manufacturer)
+            @Html.DisplayFor(model => model.Vehicle.Manufacturer)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Model)
+            @Html.DisplayNameFor(model => model.Vehicle.Model)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Model)
+            @Html.DisplayFor(model => model.Vehicle.Model)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Color)
+            @Html.DisplayNameFor(model => model.Vehicle.Color)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Color)
+            @Html.DisplayFor(model => model.Vehicle.Color)
         </dd>
 
         <dt>
@@ -51,16 +51,16 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NumberOfWheels)
+            @Html.DisplayNameFor(model => model.Vehicle.NumberOfWheels)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NumberOfWheels)
+            @Html.DisplayFor(model => model.Vehicle.NumberOfWheels)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Licens }, new { @class="btn btn-success" })
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Vehicle.Licens }, new { @class="btn btn-success" })
     @Html.ActionLink("Back to List", "Index", null, new { @class="btn btn-primary"})
 </p>

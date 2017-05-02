@@ -1,0 +1,28 @@
+﻿@model Garage1.ViewModel.StatisticsViewModel
+
+@{
+    ViewBag.Title = "Statistics";
+}
+
+<h2>Statistics</h2>
+
+<div class="">
+    <div>
+        <span><strong>Number Of Parked Vehicles</strong> @Model.NrOfParkedVehicles</span>
+    </div>
+    <div>
+        <span><strong>Number Of Parked Cars</strong> @Model.NrOfParkedCars</span>
+    </div>
+    <div>
+        <span><strong>Number Of Parked Motorcycles</strong> @Model.NrOfParkedMotorcycle</span>
+    </div>
+    <div>
+        <span><strong>Number Of Parked Busses</strong> @Model.NrOfParkedBuss</span>
+    </div>
+    <div>
+        <span><strong>Number Of Parked Wheels</strong> @Model.NrOfWheels</span>
+    </div>
+    <div>
+        <span><strong>Total Cost Of Parked Vehicles</strong> @Model.TotalCost kr</span>
+    </div>
+</div>

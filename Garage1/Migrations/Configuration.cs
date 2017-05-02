@@ -20,12 +20,12 @@ namespace Garage1.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //
-            context.Vehicles.AddOrUpdate(
-              p => p.Licens,
-              new ParkedVehicle { Licens = "TEN-712", VehicleType = Enums.Vehicles.Car, Manufacturer = "Volvo", Model = "XC90", Color = "Black", NumberOfWheels = 4, CheckInTime = DateTime.Now },
-              new ParkedVehicle { Licens = "HER-034", VehicleType = Enums.Vehicles.Car, Manufacturer = "BMW", Model = "M3", Color = "Red", NumberOfWheels = 4, CheckInTime = DateTime.Now },
-              new ParkedVehicle { Licens = "FND-258", VehicleType = Enums.Vehicles.Car, Manufacturer = "Saab", Model = "9-3", Color = "Blue", NumberOfWheels = 4, CheckInTime = DateTime.Now }
-            );
+            //context.Vehicles.AddOrUpdate(
+            //  p => p.Licens,
+            //  new ParkedVehicle { Licens = "TEN-712", VehicleType = Enums.Vehicles.Car, Manufacturer = "Volvo", Model = "XC90", Color = "Black", NumberOfWheels = 4, CheckInTime = DateTime.Now },
+            //  new ParkedVehicle { Licens = "HER-034", VehicleType = Enums.Vehicles.Car, Manufacturer = "BMW", Model = "M3", Color = "Red", NumberOfWheels = 4, CheckInTime = DateTime.Now },
+            //  new ParkedVehicle { Licens = "FND-258", VehicleType = Enums.Vehicles.Car, Manufacturer = "Saab", Model = "9-3", Color = "Blue", NumberOfWheels = 4, CheckInTime = DateTime.Now }
+            //);
             
         }
     }

@@ -17,12 +17,12 @@
     </div>
     <br />
     <div class="data-row">
-        <div class="data-heading">@Model.Vehicle.Manufacturer</div>
+        <div class="data-heading">@Model.Details.Vehicle.Manufacturer</div>
     </div>
     <br />
     <div class="data-row">
         <div class="data-title">Parked </div>
-        <div class="data-body">@Model.Vehicle.CheckInTime</div>
+        <div class="data-body">@Model.Details.CheckInTime</div>
     </div>
     <br />
     <div class="data-row">
@@ -31,23 +31,23 @@
     </div>
 
     <div class="data-row">
-        <div class="data-title">@Html.DisplayNameFor(m => m.Vehicle.Licens) </div>
-        <div class="data-body">@Model.Vehicle.Licens</div>
+        <div class="data-title">@Html.DisplayNameFor(m => m.Details.Vehicle.Licens) </div>
+        <div class="data-body">@Model.Details.Vehicle.Licens</div>
     </div>
 
     <div class="data-row">
-        <div class="data-title">@Html.DisplayNameFor(m => m.Vehicle.Model) </div>
-        <div class="data-body">@Model.Vehicle.Model</div>
+        <div class="data-title">@Html.DisplayNameFor(m => m.Details.Vehicle.Model) </div>
+        <div class="data-body">@Model.Details.Vehicle.Model</div>
     </div>
 
     <div class="data-row">
-        <div class="data-title">@Html.DisplayNameFor(m => m.Vehicle.Color) </div>
-        <div class="data-body">@Model.Vehicle.Color</div>
+        <div class="data-title">@Html.DisplayNameFor(m => m.Details.Vehicle.Color) </div>
+        <div class="data-body">@Model.Details.Vehicle.Color</div>
     </div>
 
 
     @{ 
-        TimeSpan timeParked = DateTime.Now - Model.Vehicle.CheckInTime;
+        TimeSpan timeParked = DateTime.Now - Model.Details.CheckInTime;
     }
 
     <div class="data-row">

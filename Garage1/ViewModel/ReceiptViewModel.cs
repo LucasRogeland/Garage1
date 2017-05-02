@@ -8,6 +8,6 @@ namespace Garage1.ViewModel
 {
     public class ReceiptViewModel
     {
-        public ParkedVehicle Vehicle { get; set; }
+        public ParkingDetails Details { get; set; }
     }
 }

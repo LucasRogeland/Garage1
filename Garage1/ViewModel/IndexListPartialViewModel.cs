@@ -8,7 +8,7 @@ namespace Garage1.ViewModel
 {
     public class IndexListPartialViewModel
     {
-        public IEnumerable<ParkedVehicle> Vehicles { get; set; }
+        public IEnumerable<ParkingDetails> Details { get; set; }
         public string CssClassDesc { get; set; }
         public string Target { get; set; }
     }
