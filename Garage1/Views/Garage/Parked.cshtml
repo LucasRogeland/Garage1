@@ -1,0 +1,35 @@
+﻿@model Garage1.ViewModel.Garage.ParkedViewModel
+
+@{
+    ViewBag.Title = "Parked";
+}
+
+<h2>Parked</h2>
+
+<div class="parked-vehicles-options">
+    <div class="btn-group">
+        <p class="my-label">Search</p>
+        <input type="text" onkeyup="searchParked(this.value)" placeholder="License" />
+
+    </div>
+</div>
+
+@if (Model.Feedback)
+{
+    <div class="alert alert-@Model.CssClass alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <p>@Model.Message</p>
+    </div>
+
+}
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Park")
+</p>
+<table id="autocomplete" class="table table-striped">
+    @{
+        Html.RenderPartial("ParkedListPartial", Model.ParkingDetails);
+    }
+</table>

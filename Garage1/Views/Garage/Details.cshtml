@@ -19,11 +19,43 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.Vehicle.VehicleType.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vehicle.VehicleType.Name)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Vehicle.License)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Vehicle.License)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vehicle.Make)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vehicle.Make)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vehicle.Model)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vehicle.Model)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vehicle.Color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vehicle.Color)
         </dd>
 
         <dt>
@@ -46,5 +78,5 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Parked")
 </p>

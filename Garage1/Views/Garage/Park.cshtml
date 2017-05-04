@@ -1,0 +1,99 @@
+﻿@model Garage1.ViewModel.Garage.ParkViewModel
+
+@{
+    ViewBag.Title = "Park";
+}
+
+<h2>Park</h2>
+
+@{
+    if (Model.Feedback)
+    {
+        Html.RenderPartial("FeedbackViewPartial", Model);
+    }
+    else
+    {
+        using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>ParkingDetails</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MemberName, "Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.MemberName, new { htmlAttributes = new { @class = "form-control", onkeyup = "autofillMemberName(this)", id = "member-name", autocomplete = "off" } })
+                        <div class="autocomplete" id="autocomplete">
+
+                        </div>
+                        @Html.ValidationMessageFor(model => model.MemberName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ParkingDetails.Vehicle.VehicleType, "Vehicle Type", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.ParkingDetails.Vehicle.VehicleTypeId, Model.VehicleTypes, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ParkingDetails.Vehicle.VehicleTypeId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ParkingDetails.Vehicle.License, "Vehicle License", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ParkingDetails.Vehicle.License, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ParkingDetails.Vehicle.License, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ParkingDetails.Vehicle.Make, "Vehicle Make", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ParkingDetails.Vehicle.Make, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ParkingDetails.Vehicle.Make, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ParkingDetails.Vehicle.Model, "Vehicle Model", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ParkingDetails.Vehicle.Model, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ParkingDetails.Vehicle.Model, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ParkingDetails.Vehicle.Color, "Vehicle Color", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ParkingDetails.Vehicle.Color, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ParkingDetails.Vehicle.Color, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ParkingDetails.ParkingSpaceId, "Parking Space", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.ParkingDetails.ParkingSpaceId, Model.ParkingSpots, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ParkingDetails.ParkingSpaceId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Park" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+
+        
+
+    }
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Parked")
+</div>
+

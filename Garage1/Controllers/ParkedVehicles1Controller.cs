@@ -12,7 +12,7 @@ using Garage1.ViewModel;
 
 namespace Garage1.Controllers
 {
-    public class ParkedVehiclesController : Controller
+    public class ParkedVehicles1Controller : Controller
     {
         private GarageContext db = new GarageContext();
         private int garageId = 1;

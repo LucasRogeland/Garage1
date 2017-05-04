@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Garage1.Models.ParkingDetails>
+﻿@model IEnumerable<Models.ParkingDetails>
 
 @{
     ViewBag.Title = "Index";
@@ -12,7 +12,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ParkingSpace)
+            @Html.DisplayNameFor(model => model.Member.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vehicle.License)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParkingSpaceId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CheckInTime)
@@ -23,7 +29,13 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.ParkingSpace)
+            @Html.DisplayFor(modelItem => item.Member.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle.License)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParkingSpaceId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CheckInTime)

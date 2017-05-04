@@ -1,4 +1,4 @@
-﻿@model Garage1.Models.ParkingDetails
+﻿@model Models.ParkingDetails
 
 @{
     ViewBag.Title = "Delete";
@@ -12,11 +12,27 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.ParkingSpace)
+            @Html.DisplayNameFor(model => model.Member.FirstName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ParkingSpace)
+            @Html.DisplayFor(model => model.Member.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vehicle.License)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vehicle.License)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParkingSpaceId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParkingSpaceId)
         </dd>
 
         <dt>

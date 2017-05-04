@@ -24,6 +24,32 @@
     }
 }
 
+function searchMembers(str) {
+    var xhttp;
+    if (window.XMLHttpRequest) {
+        xhttp = new XMLHttpRequest();
+    } else {
+        // code for IE6, IE5
+        xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    xhttp.onreadystatechange = function () {
+        if (xhttp.readyState === 4 && xhttp.status === 200) {
+            document.getElementById("autocomplete").innerHTML = xhttp.responseText;
+        }
+    };
+
+    if (str.length !== 0) {
+        console.log("Get");
+        xhttp.open("GET", "/Members/Search?Name=" + str);
+        xhttp.send();
+    } else {
+        console.log("Empty Get");
+        xhttp.open("GET", "/Members/SearchAll");
+        xhttp.send();
+    }
+}
+
 function AdvacedSearch() {
     var inputs = document.getElementsByClassName("advanced-search-input");
     var Manufacturer = "";
@@ -71,6 +97,74 @@ function AdvacedSearch() {
 
     
 
+
+}
+
+function autofillMemberName(x) {
+    var str = x.value;
+    var xhttp;
+    var autocomplete = document.getElementById("autocomplete");
+    if (window.XMLHttpRequest) {
+        xhttp = new XMLHttpRequest();
+    } else {
+        // code for IE6, IE5
+        xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    var choices;
+    xhttp.onreadystatechange = function () {
+        if (xhttp.readyState === 4 && xhttp.status === 200) {
+            autocomplete.innerHTML = xhttp.responseText;
+            autocomplete.style.display = "block";
+        }
+    };
+
+    if (str.length !== 0) {
+        console.log("Get");
+        xhttp.open("GET", "/Members/SearchA?Name=" + str);
+        xhttp.send();
+    } else {
+        autocomplete.innerHTML = "";
+        autocomplete.style.display = "none";
+    }
+}
+
+function autocompleteSelect(x) {
+
+    var input = document.getElementById("member-name");
+    var autocomplete = document.getElementById("autocomplete");
+    input.value = x.innerHTML;
+    autocomplete.style.display = "none";
+
+}
+
+function searchParked(str) {
+    var xhttp;
+    if (window.XMLHttpRequest) {
+        xhttp = new XMLHttpRequest();
+    } else {
+        // code for IE6, IE5
+        xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    xhttp.onreadystatechange = function () {
+        if (xhttp.readyState === 4 && xhttp.status === 200) {
+            document.getElementById("autocomplete").innerHTML = xhttp.responseText;
+        }
+    };
+
+    if (str.length !== 0) {
+        console.log("Get");
+        xhttp.open("GET", "/Garage/Search?License=" + str);
+        xhttp.send();
+    } else {
+        console.log("Empty Get");
+        xhttp.open("GET", "/Garage/SearchAll");
+        xhttp.send();
+    }
+}
+
+function searchAvailableMembers(x) {
+    var c = document.getElementById("member-name");
 
 }
 

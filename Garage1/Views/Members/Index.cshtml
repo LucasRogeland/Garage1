@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Models.Member>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<div class="parked-vehicles-options">
+    <div class="btn-group">
+        <p class="my-label">Search</p>
+        <input type="text" onkeyup="searchMembers(this.value)" placeholder="Name" />
+
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Create New", "Register")
+</p>
+
+<table id="autocomplete" class="table table-striped">
+
+    @{
+        Html.RenderPartial("IndexListPartial", Model);
+    }
+</table>

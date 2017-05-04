@@ -1,0 +1,10 @@
+﻿@model List<Models.Member>
+
+    <ul>
+        @{ 
+            foreach(Models.Member m in Model){
+                <li onclick="autocompleteSelect(this)">@m.FirstName @m.LastName</li>
+            }
+        }
+    </ul>
+
