@@ -157,13 +157,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704271314166_init.cs" />
     <Compile Include="Migrations\201704271314166_init.Designer.cs">
       <DependentUpon>201704271314166_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201705040704396_garageName+.cs" />
     <Compile Include="Migrations\201705040704396_garageName+.Designer.cs">
       <DependentUpon>201705040704396_garageName+.cs</DependentUpon>
+
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Garage.cs" />
@@ -180,8 +180,10 @@
     <Compile Include="ViewModel\StatisticsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\01_liverpool-one-car-park_int3.jpg" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\mercedes-benz-sls-amg-black-series-yellow-mercedes-benz-yellow-road-supercar.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
